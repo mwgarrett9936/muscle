@@ -1,3 +1,18 @@
+/******************************************************************************
+ *
+ * TI FlexPack - MSP430 LaunchPad Hardware UART Demo
+ *
+ * This example uses both inputs of the TI FlexPack booster pack to output
+ * ADC data via the MSP430 hardware UART. This example is useful for PC
+ * applications that require EMG signal data.
+ *
+ * The current output for the serial data is as follows:
+ * A0 = 1024 - A4 = 1024
+ *
+ * The format can be easily adapted to a more efficient structure such
+ * as "1024;1023" be adjusted the puts and putc function calls.
+ *
+ *****************************************************************************/
 #include "msp430g2553.h"
 #include <string.h>
 

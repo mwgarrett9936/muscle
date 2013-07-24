@@ -1,11 +1,21 @@
+/******************************************************************************
+ *
+ * TI FlexPack - MSP430 LaunchPad LED Demo
+ *
+ * This example uses channel one of the TI FlexPack booster pack to control
+ * an array of four digital outputs connected to LEDs.
+ *
+ * The voltage input range is sectioned off into four parts which are used
+ * to determine when the each LED should be lit.
+ *
+ * The output pins are P1.5, P2.0, P2.1, and P2.2;
+ *
+ *****************************************************************************/
 #include "msp430g2553.h"
-#include <string.h>
 
 	unsigned int ADC[5]; 		//Holds ADC values (ADC[0] = P1.4, ADC[4] = P1.0)
 	unsigned int A0value = 0; 	//ADC value read on P1.0
 	unsigned int A4value = 0; 	//ADC value read on P1.4
-	unsigned int A0max = 0;
-	unsigned int A0min = 1024;
 
 void main(void)
 
@@ -29,10 +39,6 @@ void main(void)
 	while(1) {
 		ADC10CTL0 |= ENC + ADC10SC;
 		while (ADC10CTL1 & BUSY)
-		if(A0value < A0min)
-			A0min = A0value;
-		if(A0value > A0max)
-			A0max = A0value;
 		if(A0value > 200) {
 			P1OUT |= BIT5;
 			if(A0value > 300)
